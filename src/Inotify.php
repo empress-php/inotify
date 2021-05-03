@@ -36,7 +36,7 @@ class Inotify
 
         $this->resource = $handle;
 
-        stream_set_blocking($this->resource, false);
+        \stream_set_blocking($this->resource, false);
 
         $this->watcherId = Loop::onReadable($this->resource, function ($watcherId) {
             $deferred = $this->notifier;
@@ -46,6 +46,7 @@ class Inotify
 
             $deferred->resolve($this->getEvents());
 
+            /** @psalm-suppress RedundantCondition */
             if (!$this->notifier) {
                 Loop::disable($watcherId);
             }

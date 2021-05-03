@@ -111,8 +111,8 @@ class InotifyTest extends AsyncTestCase
         $inotify = new Inotify();
         $inotify->addWatch(self::STATIC_DIR, \IN_ATTRIB);
 
-        touch(self::FOO_FILE);
-        touch(self::BAR_FILE);
+        \touch(self::FOO_FILE);
+        \touch(self::BAR_FILE);
 
         static::assertTrue($inotify->getPendingEvents());
     }
