@@ -1,5 +1,5 @@
 {
-    "name": "empress-php/empress-inotify",
+    "name": "empress-php/inotify",
     "description": "ext-inotify wrapper for Amp",
     "license": "MIT",
     "authors": [
