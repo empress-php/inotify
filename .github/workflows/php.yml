@@ -36,6 +36,4 @@ jobs:
         XDEBUG_MODE=coverage php vendor/bin/phpunit -c phpunit.xml.dist
         
     - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      run: php vendor/bin/php-coveralls
