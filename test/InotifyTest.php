@@ -6,7 +6,7 @@ use Amp\Loop;
 use Amp\PHPUnit\AsyncTestCase;
 use Empress\Inotify\Event;
 use Empress\Inotify\Inotify;
-use Empress\Inotify\InvalidDescriptorException;
+use Empress\Inotify\InvalidWatchException;
 use Empress\Inotify\PendingEventReadError;
 
 class InotifyTest extends AsyncTestCase
@@ -67,7 +67,7 @@ class InotifyTest extends AsyncTestCase
 
     public function testAddWatch()
     {
-        $this->expectException(InvalidDescriptorException::class);
+        $this->expectException(InvalidWatchException::class);
 
         $inotify = new Inotify();
         $inotify->addWatch(self::STATIC_DIR, 0);
@@ -75,7 +75,7 @@ class InotifyTest extends AsyncTestCase
 
     public function testRemoveWatch()
     {
-        $this->expectException(InvalidDescriptorException::class);
+        $this->expectException(InvalidWatchException::class);
 
         $inotify = new Inotify();
         $descriptor = $inotify->addWatch(self::STATIC_DIR, \IN_ATTRIB);
@@ -106,7 +106,7 @@ class InotifyTest extends AsyncTestCase
         static::assertIsResource($inotify->getResource());
     }
 
-    public function testGetQueueLength(): void
+    public function testGetPendingEvents(): void
     {
         $inotify = new Inotify();
         $inotify->addWatch(self::STATIC_DIR, \IN_ATTRIB);

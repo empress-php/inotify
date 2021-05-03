@@ -95,12 +95,12 @@ class Inotify
     /**
      * Adds a watch and returns the corresponding descriptor.
      *
-     * @throws InvalidDescriptorException If watch couldn't be added
+     * @throws InvalidWatchException If watch couldn't be added
      */
     public function addWatch(string $path, int $mask): int
     {
         if (!($descriptor = @\inotify_add_watch($this->resource, $path, $mask))) {
-            throw new InvalidDescriptorException('Watch for path "' . $path . '" and mask "' . $mask . '" could not be added.');
+            throw new InvalidWatchException('Watch for path "' . $path . '" and mask "' . $mask . '" could not be added.');
         }
 
         return $descriptor;
@@ -109,12 +109,12 @@ class Inotify
     /**
      * Removes a watch.
      *
-     * @throws InvalidDescriptorException If watch doesn't exist or couldn't be removed
+     * @throws InvalidWatchException If watch doesn't exist or couldn't be removed
      */
     public function removeWatch(int $descriptor): void
     {
         if (!@\inotify_rm_watch($this->resource, $descriptor)) {
-            throw new InvalidDescriptorException('Watch could not be removed');
+            throw new InvalidWatchException('Watch could not be removed');
         }
     }
 
