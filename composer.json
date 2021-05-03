@@ -1,0 +1,34 @@
+{
+    "name": "empress-php/empress-inotify",
+    "description": "ext-inotify wrapper for Amp",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Groncki",
+            "email": "jakub.groncki@gmail.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+        "amphp/amp": "^2.5",
+        "ext-inotify": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "amphp/phpunit-util": "^1.4",
+        "amphp/php-cs-fixer-config": "dev-master",
+        "php-coveralls/php-coveralls": "^2.2",
+        "vimeo/psalm": "^4.7",
+        "friendsofphp/php-cs-fixer": "^2.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "Empress\\Inotify\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Empress\\Inotify\\Test\\": "test/"
+        }
+    }
+}
