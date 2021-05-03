@@ -23,3 +23,14 @@ jobs:
         tools: composer:v2, phpunit, vimeo/psalm, php-cs-fixer
       env:
         fail-fast: true
+
+    - name: Install dependencies
+      run: composer update --prefer-dist --optimize-autoloader --no-progress
+
+    - name: Run psalm
+      run: vendor/bin/psalm --no-cache
+
+    - name: Run tests
+      run: |
+        mkdir -p build/logs
+        XDEBUG_MODE=coverage php vendor/bin/phpunit -c phpunit.xml.dist
