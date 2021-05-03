@@ -65,7 +65,7 @@ class InotifyTest extends AsyncTestCase
         static::assertFalse($inotify->getPendingEvents());
     }
 
-    public function testAddWatch()
+    public function testAddWatch(): void
     {
         $this->expectException(InvalidWatchException::class);
 
@@ -73,7 +73,7 @@ class InotifyTest extends AsyncTestCase
         $inotify->addWatch(self::STATIC_DIR, 0);
     }
 
-    public function testRemoveWatch()
+    public function testRemoveWatch(): void
     {
         $this->expectException(InvalidWatchException::class);
 
@@ -84,7 +84,7 @@ class InotifyTest extends AsyncTestCase
         $inotify->removeWatch($descriptor);
     }
 
-    public function testPendingEventReadError()
+    public function testPendingEventReadError(): void
     {
         $this->expectException(PendingEventReadError::class);
 
