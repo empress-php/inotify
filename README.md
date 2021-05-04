@@ -8,7 +8,7 @@ Non-blocking ext-inotify wrapper for Amp
 ## Install it
 ```sh
 composer require empress-php/inotify
-``
+```
 
 ## Example
 ```php
